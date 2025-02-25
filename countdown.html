@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L2 Shangai - Nuevo Servidor C4</title>
+  <script>
+    // ✅ Cambia la fecha aquí para modificar la cuenta regresiva
+    const LAUNCH_DATE = '2025-04-01T00:00:00'; // Formato ISO: YYYY-MM-DDTHH:MM:SS
+
+    const launchDate = new Date(LAUNCH_DATE);
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = launchDate - now;
+      const countdownElement = document.getElementById('countdown');
+
+      if (diff <= 0) {
+        countdownElement.textContent = '¡El servidor está en línea!';
+        clearInterval(timer);
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    const timer = setInterval(updateCountdown, 1000);
+    window.onload = updateCountdown;
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://cdn.cloudflare.steamstatic.com/steam/apps/766570/ss_7efb9b76f6489a63e2e9a2841a6d5d7e4c6a69b3.1920x1080.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    #countdown {
+      font-size: 2rem;
+      font-weight: bold;
+      background: rgba(255, 152, 0, 0.9);
+      padding: 10px 20px;
+      border-radius: 12px;
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #4caf50;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.3s, transform 0.2s;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background: #388e3c;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>L2 Shangai</h1>
+    <p>¡Prepárate para el lanzamiento del nuevo servidor Lineage 2 C4!</p>
+    <div id="countdown">Cargando...</div>
+    <br>
+    <a href="#" class="btn">Registrarse Ahora</a>
+  </div>
+</body>
+</html>
